@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0058)http://demo.geekslabs.com/materialize-v1.0/user-login.html -->
-<html lang="en">
+<html lang="en" ng-app="mybuilder">
 
 <%- include('head'); %>
 
-  <body class="cyan loaded">
+  <body class="lime loaded">
     <!-- Start Page Loading -->
     <div id="loader-wrapper">
       <div id="loader"></div>
@@ -13,101 +12,47 @@
     </div>
     <!-- End Page Loading -->
 
-    <div id="login-page" class="row z-depth-4 card-panel">
+    <div id="login-page" class="row">
 
-      <!-- Cabeçalho -->
-      <div class="row">
-        <div class="input-field col s12 center">
-          <img src="/images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
-          <p class="center login-form-text">Text very very very very........ fucking long, long as enought</p>
+      <div class="z-depth-4 card-panel col s12">
+        <!-- Cabeçalho -->
+        <div class="input-field center">
+          <img src="/images/login-logo.png" alt="" class="responsive-img valign profile-image-login">
+          <p class="center login-form-text">Welcome
+            <%= user %>
+          </p>
+          <a href="/files/build" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Upload File</a>
+          <a href="/account/logout" class="waves-effect waves-light btn"><i class="material-icons right">exit_to_app</i>Logout</a>
         </div>
-      </div>
-      <!-- ========= -->
 
-      <!-- Lista -->
-      <div class="row s6">
+        <!-- Lista -->
+        <div ng-controller="mybuildercontroller">
+          <ul class="collection" ng-repeat="build in list">
 
-        <ul class="collapsible popout" data-collapsible="accordion">
+            <li class="collection-item avatar">
+              <i class="material-icons circle">{{build.icon}}</i>
+              <span class="title">{{build.name}}</span>
+              <p>
+                Date: {{build.date}} <br>Time: {{build.time}} <br>Hash: {{build.hash}}
+              </p>
 
-          <li>
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
+              <div class="secondary-content">
+                <a href="/files/validate"><i class="material-icons">cloud_done</i></a>
+                <a href="/files/update"><i class="material-icons">cloud_upload</i></a>
+                <a href="#!delete"><i class="material-icons">delete</i></a>
+              </div>
 
-          <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
+            </li>
 
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-
-        </ul>
-
-      </div>
-      <!-- ===== -->
-
-
-      <div class="row">
-
-        <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width" ng-app="photoshare">
-          <li class="tab col s3"><a href="#test-swipe-1">Upload</a></li>
-          <li class="tab col s3"><a href="#test-swipe-2">Veriffy</a></li>
-        </ul>
-
-        <div id="test-swipe-1" class="col s12">
-
-          <!-- Formulário -->
-          <form class="login-form center" method="post" action="/files/build" enctype="multipart/form-data"></form>
-
-          <div class="row">
-            <div class="input-field col s12 center">
-              <input type="file" class="dropify" name="image" id="file"/>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input type="submit" id="submit" value="Submit" class="btn waves-effect waves-light col s12" />
-            </div>
-          </div>
-
-          </form>
-          <!-- ========== -->
-
-        </div>
-        <div id="test-swipe-2" class="col s12">
-
-          <!-- Formulário -->
-          <form class="login-form center" method="post" action="/files/build" enctype="multipart/form-data"></form>
-
-          <div class="row">
-            <div class="input-field col s12 center">
-              <input type="file" class="dropify" name="image" id="file" accept="image/*"/>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input type="submit" id="submit" value="Submit" class="btn waves-effect waves-light col s12" />
-            </div>
-          </div>
-
-          </form>
-          <!-- ========== -->
-
+          </ul>
         </div>
 
       </div>
-
     </div>
 
     <%- include('scripts'); %>
-      <script src="/javascripts/angular.min.js"></script>
+      <script src="/javascripts/angular.js"></script>
       <script src="/javascripts/angular_controler.js"></script>
-      <script src="/javascripts/upload.js"></script>
 
       <div class="hiddendiv common"></div>
   </body>

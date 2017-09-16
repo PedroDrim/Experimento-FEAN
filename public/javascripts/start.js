@@ -1,2 +1,1 @@
-$('.collapsible').collapsible();
 $('.dropify').dropify();

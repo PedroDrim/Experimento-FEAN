@@ -18,20 +18,20 @@
         <form class="login-form" method="post" action="/account/reset">
           <div class="row">
             <div class="input-field col s12 center">
-              <img src="/images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+              <img src="/images/login-logo.png" alt="" class="responsive-img valign profile-image-login">
               <p class="center login-form-text">Recover your MyBuilder account</p>
             </div>
           </div>
           <div class="row margin">
             <div class="input-field col s12">
-              <i class="mdi-social-person-outline prefix"></i>
-              <input id="email" type="text" name="email">
-              <label for="email" class="center-align">Email</label>
+              <i class="prefix material-icons">email_outline</i>
+              <input id="email" type="text" name="email" class="validate">
+              <label for="email" class="center-align" data-error="wrong" data-success="right">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input type="submit" id="submit" value="Login" class="btn waves-effect waves-light col s12" />
+              <input type="submit" id="submit" value="Recover" class="btn waves-effect waves-light col s12" />
             </div>
           </div>
           <div class="row">

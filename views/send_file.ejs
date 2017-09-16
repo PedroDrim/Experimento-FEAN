@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('head'); %>
+
+    <body class="lime loaded">
+        <!-- Start Page Loading -->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+        <!-- End Page Loading -->
+
+        <div id="login-page" class="row">
+
+            <div class="z-depth-4 card-panel col s12">
+
+                <!-- Cabeçalho -->
+                <div class="input-field center">
+                    <img src="/images/login-logo.png" alt="" class="responsive-img valign profile-image-login">
+                    <p class="center login-form-text">Welcome
+                        <%= obj.user %>, select a file to <%= obj.name %> them.
+                    </p>
+                </div>
+
+
+                <!-- Formulário -->
+                <form class="login-form center" method="post" action=<%= obj.route %> enctype="multipart/form-data"></form>
+
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <input type="file" class="dropify" name="build" id="build_file" accept="media_type" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="submit" id="submit" value=<%= obj.name %> class="btn waves-effect waves-light col s12"
+                        />
+                    </div>
+                </div>
+
+                </form>
+                <!-- ========== -->
+                
+                <div class="row">
+                    <a class="btn waves-effect waves-light col s12" href="/account">Back</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hiddendiv common"></div>
+    </body>
+
+    <%- include('scripts'); %>
+
+</html>

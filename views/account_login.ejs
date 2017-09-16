@@ -20,24 +20,24 @@
         
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="/images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+            <img src="/images/login-logo.png" alt="" class="responsive-img valign profile-image-login">
             <p class="center login-form-text">Login in MyBuilder account</p>
           </div>
         </div>
         
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
-            <input id="email" type="text" name="email">
-            <label for="email" class="center-align">Email</label>
+            <i class="prefix material-icons">email_outline</i>
+            <input id="email" type="text" name="email" class="validade">
+            <label for="email" class="center-align" data-error="wrong" data-success="right">Email</label>
           </div>
         </div>
         
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-            <input id="password" type="password" name="password">
-            <label for="password">Password</label>
+            <i class="prefix material-icons">lock_outline</i>
+            <input id="password" type="password" name="password" class="validate">
+            <label for="password" class="center-align" data-error="wrong" data-success="right">Password</label>
           </div>
         </div>
         
