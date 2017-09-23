@@ -126,7 +126,22 @@ router.get('/', function (req, res, next) {
 
   // Verificando existencia do usuário
   if (user) {
-    res.render('index', { user: user.displayName });
+
+    // Buscando objetos no firebase
+    var uid = user.uid;
+    var ref = firebase.database().ref("Users/" + uid);
+
+    ref.once("value").then(function (snapshot) {
+      
+      var value = snapshot.val();
+
+      res.render('index', { 
+        user: user.displayName,
+        list: value
+      });
+
+    });
+
   } else {
     res.send("Erro");
   }

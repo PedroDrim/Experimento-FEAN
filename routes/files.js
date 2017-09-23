@@ -56,26 +56,6 @@ router.post('/update', function (req, res, next) {
 
 });
 
-// Requisição GET de 'files/user_data.json'
-router.get('/user_data.json', function (req, res, next) {
-
-  var user = auth.currentUser;
-
-  if (user) {
-    // Buscando objetos no firebase
-    var uid = user.uid;
-    var ref = firebase.database().ref("Users/" + uid);
-
-    ref.once("value").then(function (snapshot) {
-      res.json(snapshot.val());
-    });
-
-  } else {
-    res.send("Erro");
-  }
-
-});
-
 // Requisição GET de 'files/validate'
 router.get('/validate', function (req, res, next) {
 
@@ -103,7 +83,8 @@ router.get('/build', function (req, res, next) {
     var objeto = {
       route: 'files/build',
       name: 'Build',
-      user: user.displayName
+      user: user.displayName,
+      icon: "security"
     };
     res.render("send_file", { obj: objeto });
   } else {
@@ -128,6 +109,28 @@ router.get('/update', function (req, res, next) {
     res.send("Erro");
   }
 
+});
+
+// Requisição GET de 'files/delete'
+// 'key' é um parametro esperado na requisição
+router.get('/delete/:key', function (req, res, next) {
+  
+    var user = auth.currentUser;
+  
+    if (user) {
+      var key = req.params.key
+      
+      // Removendo objeto do firebase
+      var ref = firebase.database().ref();
+      var uid = auth.currentUser.uid;
+      ref.child("Users/" + uid + "/" + key).remove();
+
+      res.redirect('/account');
+
+    } else {
+      res.send("Erro");
+    }
+  
 });
 
 module.exports = router;

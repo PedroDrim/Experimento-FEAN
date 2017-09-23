@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mybuilder">
+<html lang="en">
 
 <%- include('head'); %>
 
@@ -26,33 +26,35 @@
         </div>
 
         <!-- Lista -->
-        <div ng-controller="mybuildercontroller">
-          <ul class="collection" ng-repeat="build in list">
+        <ul class="collection">
+          <% for(var key in list) { %>
+          <% var build = list[key] %>
 
             <li class="collection-item avatar">
-              <i class="material-icons circle">{{build.icon}}</i>
-              <span class="title">{{build.name}}</span>
+              <i class="material-icons circle"><%= build.icon %></i>
+              <span class="title"><%= build.name %></span>
               <p>
-                Date: {{build.date}} <br>Time: {{build.time}} <br>Hash: {{build.hash}}
+                Date: <%= build.date %> <br>
+                Time: <%= build.time %> <br>
+                Security Hash: <%= build.hash %>
               </p>
 
               <div class="secondary-content">
                 <a href="/files/validate"><i class="material-icons">cloud_done</i></a>
                 <a href="/files/update"><i class="material-icons">cloud_upload</i></a>
-                <a href="#!delete"><i class="material-icons">delete</i></a>
+                <a href= <%= "/files/delete/" + key %> <i class="material-icons">delete</i></a>
               </div>
 
             </li>
 
-          </ul>
-        </div>
+            <% }; %>
+
+        </ul>
 
       </div>
     </div>
 
     <%- include('scripts'); %>
-      <script src="/javascripts/angular.js"></script>
-      <script src="/javascripts/angular_controler.js"></script>
 
       <div class="hiddendiv common"></div>
   </body>
