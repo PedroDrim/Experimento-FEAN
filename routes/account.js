@@ -186,6 +186,8 @@ router.get('/', function (req, res, next) {
         list: value
       });
 
+    }, function (err) {
+      res.send("Não foi possivel obter os dados.");
     });
 
   } else {

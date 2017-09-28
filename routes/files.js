@@ -41,41 +41,6 @@ router.post('/build', function (req, res, next) {
 
 });
 
-// Requisição POST de 'files/validate'
-// 'key' é um parametro esperado na requisição
-router.post('/validate/:key', function (req, res, next) {
-
-  var user = auth.currentUser;
-
-  if (user) {
-
-    var uid = user.uid;
-    req.pipe(req.busboy);
-    req.busboy.on('file', function (fieldname, file, filename) {
-
-      var key = req.params.key
-
-      // Obtendo hash referente ao arquivo
-      var hashExpected = bcrypt.hashSync(file);
-
-      var ref = firebase.database().ref("Users/" + uid + "/" + key);
-
-      ref.once("value").then(function (snapshot) {
-
-        var value = snapshot.val();
-        var hashObtain = value.hash;
-
-      });
-
-      res.redirect('/account');
-
-    });
-
-  } else {
-    res.send("Operação possível apenas com autenticação.");
-  }
-
-});
 
 // Requisição POST de 'files/update'
 // 'key' é um parametro esperado na requisição
@@ -124,30 +89,10 @@ router.get('/build', function (req, res, next) {
 
   if (user) {
     var objeto = {
-      route: 'files/build',
+      route: '/files/build',
       name: 'Build',
       user: user.displayName,
       icon: "security"
-    };
-    res.render("send_file", { obj: objeto });
-  } else {
-    res.redirect('/account/login');
-  }
-
-});
-
-// Requisição GET de 'files/validate'
-// 'key' é um parametro esperado na requisição
-router.get('/validate/:key', function (req, res, next) {
-
-  var user = auth.currentUser;
-  var key = req.params.key;
-
-  if (user) {
-    var objeto = {
-      route: 'files/validate/' + key,
-      name: 'Validate',
-      user: user.displayName
     };
     res.render("send_file", { obj: objeto });
   } else {
@@ -165,7 +110,7 @@ router.get('/update/:key', function (req, res, next) {
 
   if (user) {
     var objeto = {
-      route: 'files/update/' + key,
+      route: '/files/update/' + key,
       name: 'Update',
       user: user.displayName
     };
