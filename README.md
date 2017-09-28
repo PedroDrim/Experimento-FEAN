@@ -1,4 +1,4 @@
-# MyBuilder-FEAN
+# MyBuilder-FEN
 Repositório para experimentação do STACK FEN (Firebase, Express e Node), entretanto será utilizado firebase como banco de dados ao invéz do mongoDB.
 
 # Funções Esperadas
