@@ -10,6 +10,8 @@ var index = require('./routes/index');
 var files = require('./routes/files');
 var account = require('./routes/account');
 
+var firebase = require('./service/firebase_config');
+
 var app = express();
 
 // view engine setup
