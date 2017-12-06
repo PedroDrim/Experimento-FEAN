@@ -1,5 +1,19 @@
 # MyBuilder-FEN
-Repositório para experimentação do STACK FEN (Firebase, Express e Node), entretanto será utilizado firebase como banco de dados ao invéz do mongoDB.
+Repositório para experimentação do STACK FEN (Firebase, Express e Node).
+
+# Instalação
+1. Clone o repositório com: 
+```
+git clone https://github.com/PedroDrim/MyBuilder-FEN.git
+```
+2. Dentro do diretório gerado monte o container com o Docker da aplicação com: 
+```
+docker build -t <nome do container> .
+```
+3. Execute o container do Docker com o comando:
+```
+sudo docker run -p <porta de saida>:5000 -d <nome do container>
+```
 
 # Funções Esperadas
 
